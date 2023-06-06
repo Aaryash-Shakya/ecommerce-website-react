@@ -1,14 +1,16 @@
 import React from 'react'
-import First from './First'
-import {Test} from './Test'
 import { BrowserRouter as Router,Routes,Route} from 'react-router-dom'
+import Layouts from './components/Layouts'
+import HomePage from './pages/HomePage'
+import TestNav from './TestNav'
 const MyRoutes = () => {
   return (
     <Router>
         <Routes>
-            <Route path='' element={<Test/>}/>
-            <Route path='test' element={<First/>}/>
-            
+          <Route path='' element={<Layouts/>}>
+            <Route index element={<HomePage/>}/>
+            <Route path='/test' element={<TestNav/>}/>
+          </Route>
         </Routes>
     </Router>
   )
