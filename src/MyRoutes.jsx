@@ -4,6 +4,8 @@ import Layouts from './components/Layouts'
 import HomePage from './pages/HomePage'
 import TestNav from './TestNav'
 import Login from './pages/Login'
+import ProductDetails from './pages/ProductDetails'
+import Product from './pages/Product'
 const MyRoutes = () => {
   return (
     <Router>
@@ -12,6 +14,8 @@ const MyRoutes = () => {
             <Route index element={<HomePage/>}/>
             <Route path='/test' element={<TestNav/>}/>
             <Route path='/login' element={<Login/>}/>
+            <Route path='/productdetails/:product_id' element={<ProductDetails/>}/>
+            <Route path='/product' element={<Product/>}/>
           </Route>
         </Routes>
     </Router>
