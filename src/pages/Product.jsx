@@ -70,13 +70,13 @@ const Product = () => {
                         }}>SEE MORE</button> */}
     
                         {
-                            limit < 20 &&
+                            limit < products.length &&
                             <button id="seeMoreBtn" className="btn btn-danger m-3" onClick={() => setLimit(limit + 5)}>
                                 LOAD MORE
                             </button>
                         }
                         {
-                            limit > 5 &&
+                            limit > 10 &&
                             <button id="seeLessBtn" className="btn btn-warning m-3" onClick={() => setLimit(limit - 5)}>
                                 LOAD LESS
                             </button>

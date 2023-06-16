@@ -12,7 +12,7 @@ const Header = () => {
 
                     <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                         <li><Link to="#" className="nav-link px-2 link-secondary">Home</Link></li>
-                        <li><Link to="#" className="nav-link px-2">Features</Link></li>
+                        <li><Link to="/product" className="nav-link px-2">Products</Link></li>
                         <li><Link to="#" className="nav-link px-2">Pricing</Link></li>
                         <li><Link to="#" className="nav-link px-2">FAQs</Link></li>
                         <li><Link to="#" className="nav-link px-2">About</Link></li>
