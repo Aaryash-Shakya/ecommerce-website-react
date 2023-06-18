@@ -6,6 +6,7 @@ import TestNav from './TestNav'
 import Login from './pages/Login'
 import ProductDetails from './pages/ProductDetails'
 import Product from './pages/Product'
+import Cart from './pages/Cart'
 const MyRoutes = () => {
   return (
     <Router>
@@ -16,6 +17,7 @@ const MyRoutes = () => {
             <Route path='/login' element={<Login/>}/>
             <Route path='/productdetails/:product_id' element={<ProductDetails/>}/>
             <Route path='/product' element={<Product/>}/>
+            <Route path='cart' element={<Cart/>}/>  
           </Route>
         </Routes>
     </Router>
