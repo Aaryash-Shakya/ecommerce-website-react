@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaTrash } from "react-icons/fa";
 
 const Cart = () => {
   const [products, setProduct] = useState([]);
@@ -8,6 +9,43 @@ const Cart = () => {
     const cartData = JSON.parse(localStorage.getItem("cartItems"));
     setProduct(cartData);
   });
+  const removeCartHandler = (id) => {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    // remove from cart using filter
+    const filterCart = cartItems.filter((item) => item.id != id);
+    //  update product after filter
+    setProduct(filterCart);
+    localStorage.setItem("cartItems", JSON.stringify(filterCart));
+    toast.success("Item removed from cart");
+  };
+  // increase cart quantity
+  const increaseQty = (id) => {
+    const updateProducts = products.map((item) => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+    setProduct(updateProducts);
+    // update local storage
+    localStorage.setItem("cartItems", JSON.stringify(updateProducts));
+  };
+  // decrease cart quantity
+  const decreaseQty = (id) => {
+    const updateProducts = products.map((item) => {
+      if (item.id === id) {
+        if (item.quantity == 1) {
+          alert("cant decrease any further");
+        } else {
+          return { ...item, quantity: item.quantity - 1 };
+        }
+      }
+      return item;
+    });
+    setProduct(updateProducts);
+    // update local storage
+    localStorage.setItem("cartItems", JSON.stringify(updateProducts));
+  };
   return (
     <>
       <ToastContainer theme="colored" position="top-center" />
@@ -32,9 +70,37 @@ const Cart = () => {
                         </span>
                       </div>
                       <div className="col-3 text-warning">${item.price}</div>
-                      <div className="col-2">{item.quantity}</div>
                       <div className="col-2">
-                        <button className="btn btn-danger">delete</button>
+                        <div className="d-flex">
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => decreaseQty(item.id)}
+                          >
+                            -
+                          </button>
+                          &nbsp;
+                          <input
+                            type="number"
+                            className="form-control border-0 text-center"
+                            value={item.quantity}
+                            readOnly
+                          />
+                          &nbsp;
+                          <button
+                            className="btn btn-primary"
+                            onClick={() => increaseQty(item.id)}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                      <div className="col-2">
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => removeCartHandler(item.id)}
+                        >
+                          <FaTrash />
+                        </button>
                       </div>
                     </div>
                     <hr />
@@ -52,14 +118,14 @@ const Cart = () => {
                       0
                     )}
                   </span>
-                  <br/>
+                  <br />
                   <span>
                     <strong>Total: </strong>
-                    {
-                      products.reduce(
-                        (total, item)=> total + (Number(item.quantity) * Number(item.price)),0
-                      )
-                    }
+                    {products.reduce(
+                      (total, item) =>
+                        total + Number(item.quantity) * Number(item.price),
+                      0
+                    )}
                   </span>
                 </div>
               </div>
