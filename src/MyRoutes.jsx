@@ -9,6 +9,7 @@ import Product from './pages/Product'
 import Cart from './pages/Cart'
 import Register from './pages/Register'
 import Show from './context/Show'
+import TestCart from './redux/TestCart'
 const MyRoutes = () => {
   return (
     <Router>
@@ -23,6 +24,7 @@ const MyRoutes = () => {
             <Route path='cart' element={<Cart/>}/>  
           </Route>
           <Route path='context/api' element={<Show/>}/>
+          <Route path='redux/cart' element={<TestCart/>}/>
         </Routes>
     </Router>
   )
