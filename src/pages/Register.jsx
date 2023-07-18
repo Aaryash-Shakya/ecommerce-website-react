@@ -1,29 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { signUp } from "../auth/authIndex";
 
 const Register = () => {
   return (
     <>
       <Formik
-      initialValues={{firstname: '',lastname:'', email:'',password:'',cpassword:''}}
-      validationSchema={Yup.object({
-        firstname:Yup.string()
-        .required('firstname is mandatory')
-        .max(20,'20 characters or less'),
-        lastname:Yup.string()
-        .required('lastname is mandatory')
-        .max(20,'20 characters or less'),
-        email:Yup.string()
-        .required('email is mandatory')
-        .email('Invalid email format'),
-        password:Yup.string()
-        .required('password is mandatory')
-        .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@#$!_?])[A-Za-z\d@#$!_?]{8,50}$/,'must contain one uppercase, one lowercase, one digit and one special character and must be minimum of 8 characters'),
-        cpassword:Yup.string()
-        .required("confirm password is mandatory")
-        .oneOf([Yup.ref('password'),null],"password and confirm password doesn't match")
-      })}
+        initialValues={{ firstname: '', lastname: '', email: '', password: '', cpassword: '' }}
+        validationSchema={Yup.object({
+          firstname: Yup.string()
+            .required('firstname is mandatory')
+            .max(20, '20 characters or less'),
+          lastname: Yup.string()
+            .required('lastname is mandatory')
+            .max(20, '20 characters or less'),
+          email: Yup.string()
+            .required('email is mandatory')
+            .email('Invalid email format'),
+          password: Yup.string()
+            .required('password is mandatory')
+            .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@#$!_?])[A-Za-z\d@#$!_?]{8,50}$/, 'must contain one uppercase, one lowercase, one digit and one special character and must be minimum of 8 characters'),
+          cpassword: Yup.string()
+            .required("confirm password is mandatory")
+            .oneOf([Yup.ref('password'), null], "password and confirm password doesn't match")
+        })}
       >
         <div class="container my-5">
           <div className="row d-flex justify-content-center">

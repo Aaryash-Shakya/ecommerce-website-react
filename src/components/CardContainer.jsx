@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cards from "./Cards";
 import axios from "axios";
 import { ColorRing } from "react-loader-spinner";
+import { API } from "../config";
 
 const CardContainer = () => {
   const [products, setProducts] = useState([]);
@@ -11,7 +12,7 @@ const CardContainer = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://fakestoreapi.com/products`);
+        const response = await axios.get(`${API}/showproduct`);
         setProducts(response.data);
         setLoading(false);
       } catch (err) {

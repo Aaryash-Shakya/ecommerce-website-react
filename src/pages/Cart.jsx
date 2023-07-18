@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaTrash } from "react-icons/fa";
+import { IMG_URL } from "../config";
 
 const Cart = () => {
   const [products, setProduct] = useState([]);
@@ -21,7 +22,7 @@ const Cart = () => {
   // increase cart quantity
   const increaseQty = (id) => {
     const updateProducts = products.map((item) => {
-      if (item.id === id) {
+      if (item.id === id && item.quantity < item.stock) {
         return { ...item, quantity: item.quantity + 1 };
       }
       return item;
@@ -62,14 +63,14 @@ const Cart = () => {
                   <Fragment key={i}>
                     <div className="row d-flex align-items-center">
                       <div className="col-2">
-                        <img src={item.image} alt={item.title} width={"100"} />
+                        <img src={`${IMG_URL}/${item.image}`} alt={item.title} width={"100"} />
                       </div>
                       <div className="col-3">
                         <span>
                           <strong>{item.title}</strong>
                         </span>
                       </div>
-                      <div className="col-3 text-warning">${item.price}</div>
+                      <div className="col-3 text-warning">Rs {item.price}</div>
                       <div className="col-2">
                         <div className="d-flex">
                           <button
@@ -127,6 +128,7 @@ const Cart = () => {
                       0
                     )}
                   </span>
+                  <div className="btn btn-warning">Check Out</div>
                 </div>
               </div>
             </>

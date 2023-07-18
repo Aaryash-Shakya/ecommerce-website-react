@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cards from "../components/Cards";
 import axios from "axios";
 import { ColorRing } from "react-loader-spinner";
+import { API } from "../config";
 
 const Product = () => {
     const [products, setProducts] = useState([]);
@@ -11,7 +12,7 @@ const Product = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`https://fakestoreapi.com/products`);
+                const response = await axios.get(`${API}/showproduct`);
                 setProducts(response.data);
                 setLoading(false);
             } catch (err) {
@@ -54,8 +55,8 @@ const Product = () => {
                 </div>
                 {loading ? (
                     <div className="empty"></div>
-                ):(
-                    <div className="btn-container mt-3 w-100 d-flex justify-content-center align-items-center">     
+                ) : (
+                    <div className="btn-container mt-3 w-100 d-flex justify-content-center align-items-center">
                         {/* HW */}
                         {/* <button id="seeMoreBtn" className="btn btn-danger" onClick={() => {
                             const btn = document.getElementById('seeMoreBtn')
@@ -68,7 +69,7 @@ const Product = () => {
                                 setLimit(10)
                             }
                         }}>SEE MORE</button> */}
-    
+
                         {
                             limit < products.length &&
                             <button id="seeMoreBtn" className="btn btn-danger m-3" onClick={() => setLimit(limit + 5)}>
