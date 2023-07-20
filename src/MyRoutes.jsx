@@ -12,6 +12,8 @@ import Show from './context/Show'
 import TestCart from './redux/TestCart'
 import EmailVerify from './auth/EmailVerify'
 import Profile from './pages/Profile'
+import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
 const MyRoutes = () => {
   return (
     <Router>
@@ -26,6 +28,8 @@ const MyRoutes = () => {
           <Route path='/productdetails/:product_id' element={<ProductDetails />} />
           <Route path='/product' element={<Product />} />
           <Route path='cart' element={<Cart />} />
+          <Route path='forgotpassword' element={<ForgotPassword />} />
+          <Route path='reset/password/:token' element={<ResetPassword/>}/>
         </Route>
         <Route path='context/api' element={<Show />} />
         <Route path='redux/cart' element={<TestCart />} />

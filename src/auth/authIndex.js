@@ -67,3 +67,20 @@ export const signOut = next =>{
         .catch(err => console.log(err))
     }
 }
+
+//  for forgot password
+export const forgotPassword = user =>{
+    return fetch(`${API}/forgotpassword`,{
+        method: 'POST',
+        headers:{
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(user)
+    })
+    .then(res => {
+        return res.json()
+    })
+    .catch(err => console.log(err))
+}
+

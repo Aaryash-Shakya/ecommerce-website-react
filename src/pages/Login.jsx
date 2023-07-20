@@ -99,6 +99,14 @@ const Login = () => {
               <button type="submit" class="btn btn-primary" onClick={handleSubmit}>
                 Submit
               </button>
+              <div className="my-2">
+                <div className="d-flex justify-content-center align-items-center">
+                  <Link to='/forgotpassword' className="text-decoration-none">
+                    Forgot Password
+                  </Link>
+                  <Link to='/signup' className="text-decoration-none">Create Account</Link>
+                </div>
+              </div>
             </form>
           </div>
         </div>
