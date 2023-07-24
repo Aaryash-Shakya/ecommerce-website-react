@@ -14,6 +14,9 @@ import EmailVerify from './auth/EmailVerify'
 import Profile from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
+import AdminRoute from './auth/AdminRoute'
+import Dashboard from './admin/Dashboard'
+import AddCategory from './admin/AddCategory'
 const MyRoutes = () => {
   return (
     <Router>
@@ -33,6 +36,12 @@ const MyRoutes = () => {
         </Route>
         <Route path='context/api' element={<Show />} />
         <Route path='redux/cart' element={<TestCart />} />
+
+        {/* Admin */}
+        <Route path='admin/' element={<AdminRoute/>}>
+          <Route path='dashboard' element={<Dashboard/>}/>
+          <Route path='addcategory' element={<AddCategory/>}/>
+        </Route>
       </Routes>
     </Router>
   )
