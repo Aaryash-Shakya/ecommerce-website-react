@@ -19,6 +19,7 @@ import Dashboard from './admin/Dashboard'
 import AddCategory from './admin/AddCategory'
 import Category from './admin/Category'
 import AddProduct from './admin/AddProduct'
+import ShowProduct from './admin/ShowProduct'
 const MyRoutes = () => {
   return (
     <Router>
@@ -45,6 +46,7 @@ const MyRoutes = () => {
           <Route path='addcategory' element={<AddCategory />} />
           <Route path='category' element={<Category />} />
           <Route path='addproduct' element={<AddProduct />} />
+          <Route path='product' element={<ShowProduct/>} />
         </Route>
       </Routes>
     </Router>

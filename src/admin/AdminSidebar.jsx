@@ -1,7 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { isAuthenticated, signOut } from '../auth/authIndex'
 
 const AdminSidebar = () => {
+    const navigate = useNavigate()
+    const { name, email } = isAuthenticated().user
     return (
         <>
             <div className="container-fluid">
@@ -12,7 +15,7 @@ const AdminSidebar = () => {
                             Menu
                         </button>
                         <div className="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="offcanvasRight"
-                            aria-labelledby="offcanvasRightLabel" style={{width:'300px'}}>
+                            aria-labelledby="offcanvasRightLabel" style={{ width: '300px' }}>
                             <div className="offcanvas-header">
                                 <h5 id="offcanvasRightLabel">Admin Dashboard</h5>
                                 <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -21,7 +24,7 @@ const AdminSidebar = () => {
                                 <ul className="list-unstyled">
                                     <li><Link to="/admin/dashboard" className="text-decoration-none text-white">Dashboard</Link></li>
                                     <li><Link to="#" className="text-decoration-none text-white">Users</Link></li>
-                                    <li><Link to="#" className="text-decoration-none text-white">Products</Link></li>
+                                    <li><Link to="/admin/product" className="text-decoration-none text-white">Products</Link></li>
                                     <li><Link to="/admin/addproduct" className="text-decoration-none text-white">Add Product</Link></li>
                                     <li><Link to="/admin/category" className="text-decoration-none text-white">Category</Link></li>
                                     <li><Link to="/admin/addcategory" className="text-decoration-none text-white">Add Category</Link></li>
@@ -31,18 +34,15 @@ const AdminSidebar = () => {
                             <div className="offcanvas-body">
                                 <ul className="list-unstyled">
                                     <li><Link to="#" className="text-decoration-none text-white">
-                                        <b>Name : </b> admin
+                                        <b>Name : </b> {name}
                                     </Link></li>
                                     <li><Link to="#" className="text-decoration-none text-white">
-                                        <b>Email : </b> admin@gmail.com
+                                        <b>Email : </b> {email}
                                     </Link></li>
                                 </ul>
-                                <div className="img">
-                                    <img
-                                        src="https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
-                                        alt="" className="img-fluid rounded-circle" width="200" />
-                                </div>
-                                <Link to="#" className="btn btn-warning text-decoration-none">Logout</Link>
+                                <button className="btn btn-danger" onClick={() => signOut(() => {
+                                    navigate('/login')
+                                })}>LogOut</button>
                             </div>
                         </div>
                     </div>

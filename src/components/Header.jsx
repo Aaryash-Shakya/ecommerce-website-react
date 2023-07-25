@@ -1,6 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
+import { isAuthenticated,signOut } from '../auth/authIndex'
+
 const Header = () => {
+    const navigate = useNavigate()
     return (
         <>
             <div classNameName="container">
@@ -17,11 +20,28 @@ const Header = () => {
                         <li><Link to="#" className="nav-link px-2">FAQs</Link></li>
                         <li><Link to="#" className="nav-link px-2">About</Link></li>
                     </ul>
-
-                    <div className="col-md-3 text-end">
-                        <Link to="/login" className="btn btn-outline-primary me-2">Login</Link>
-                        <Link to="/signup" className="btn btn-primary">Sign-up</Link>
-                    </div>
+                    {isAuthenticated() && isAuthenticated().user.role === 1 &&
+                        <div className="text-end">
+                            <Link to="/admin/dashboard" className="me-2 text-decoration-none">Admin</Link>
+                        </div>
+                    }
+                    {isAuthenticated() && isAuthenticated().user.role === 0 &&
+                        <div className="text-end">
+                            <Link to="/profile" className="me-2 text-decoration-none">Profile</Link>
+                        </div>
+                    }
+                    {
+                        !isAuthenticated() &&
+                        <div className="text-end">
+                            <Link to="/login" className="btn btn-outline-primary me-2">Login</Link>
+                            <Link to="/signup" className="btn btn-primary">Sign-up</Link>
+                        </div>
+                    }
+                    {isAuthenticated() &&
+                        <button className="btn btn-danger" onClick={()=>signOut(()=>{
+                            navigate('/login')
+                        })}>LogOut</button>
+                    }
                 </header>
             </div>
         </>
