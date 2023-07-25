@@ -17,6 +17,8 @@ import ResetPassword from './pages/ResetPassword'
 import AdminRoute from './auth/AdminRoute'
 import Dashboard from './admin/Dashboard'
 import AddCategory from './admin/AddCategory'
+import Category from './admin/Category'
+import AddProduct from './admin/AddProduct'
 const MyRoutes = () => {
   return (
     <Router>
@@ -32,15 +34,17 @@ const MyRoutes = () => {
           <Route path='/product' element={<Product />} />
           <Route path='cart' element={<Cart />} />
           <Route path='forgotpassword' element={<ForgotPassword />} />
-          <Route path='reset/password/:token' element={<ResetPassword/>}/>
+          <Route path='reset/password/:token' element={<ResetPassword />} />
         </Route>
         <Route path='context/api' element={<Show />} />
         <Route path='redux/cart' element={<TestCart />} />
 
         {/* Admin */}
-        <Route path='admin/' element={<AdminRoute/>}>
-          <Route path='dashboard' element={<Dashboard/>}/>
-          <Route path='addcategory' element={<AddCategory/>}/>
+        <Route path='admin/' element={<AdminRoute />}>
+          <Route path='dashboard' element={<Dashboard />} />
+          <Route path='addcategory' element={<AddCategory />} />
+          <Route path='category' element={<Category />} />
+          <Route path='addproduct' element={<AddProduct />} />
         </Route>
       </Routes>
     </Router>

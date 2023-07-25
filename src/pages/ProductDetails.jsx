@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { API, IMG_URL } from "../config";
@@ -52,7 +52,7 @@ const ProductDetails = () => {
   };
   return (
     <>
-      <ToastContainer theme="colored" position="top-right"/>
+      <ToastContainer theme="colored" position="top-right" />
       <div className="container my-5">
         <div className="row d-flex justify-content-evenly align-items-center">
           <div className="col-md-5">
