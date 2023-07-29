@@ -16,7 +16,7 @@ const ShowProduct = () => {
             setProducts(res.data)
         })
         .catch(err=>console.log(err))
-    })
+    },[])
     // delete product
     const deleteProduct = id =>{
         const confirmed = window.confirm('Are you sure you want to delete this product?')
@@ -48,6 +48,7 @@ const ShowProduct = () => {
                                     <th>Price</th>
                                     <th>Stock</th>
                                     <th>Description</th>
+                                    <th>Image</th>
                                     <th>Category</th>
                                     <th>Action</th>
                                 </tr>
@@ -62,7 +63,7 @@ const ShowProduct = () => {
                                         <td><img src={`${IMG_URL}/${item.productImage}`} alt={item.productName} width={'100'} /></td>
                                         <td>{item.category.category_name}</td>
                                         <td>
-                                            <Link to="#" className='btn btn-primary mb-3'><FaEdit/></Link>
+                                            <Link to={`/admin/updateproduct/${item._id}`} className='btn btn-primary mb-3'><FaEdit/></Link>
                                             <button className="btn btn-danger" onClick={()=>deleteProduct(item._id)}>
                                                 <FaTrash/>
                                             </button>
