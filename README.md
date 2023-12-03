@@ -1,7 +1,7 @@
 # E-commerce Website
 Welcome to our React-powered ecommerce platform! 🚀 Explore our cutting-edge app with a sleek UI, responsive design, and lightning-fast performance. Browse curated products seamlessly on any device. Your perfect purchase is just a click away! 💻🛍️
 
-## [click me to check out the BACKEN
+## [click me to check out the BACKEND_PROJECT](https://github.com/Aaryash-Shakya/ecommerce-api)
 
 ## Getting Started with Create React App
 
